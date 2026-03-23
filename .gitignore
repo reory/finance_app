@@ -6,24 +6,83 @@ __pycache__/
 *.pdb
 *.egg-info/
 *.egg
+*.so
 
-# Virtual environment
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+
+
+# Virtual environments
 venv/
 env/
+.venv/
+
 
 # Django
 *.log
+*.pot
+*.pyc
+*.sqlite3
+db.sqlite3
 staticfiles/
 media/
-db.sqlite3
+static/
+media_root/
+
+# Django cache
+**/cache/
+**/tmp/
+
+# Uploaded CSVs (your ingestion pipeline)
+csv_data/*.csv
+uploads/*.csv
+
 
 # Environment variables
 .env
+.env.*
+*.env
 
-# IDE files
+
+# PostgreSQL dumps
+*.sql
+*.dump
+
+
+# IDE / Editor
 .vscode/
 .idea/
+*.swp
+*.swo
 
 # OS files
 .DS_Store
 Thumbs.db
+
+
+# Testing / Coverage
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+
+# Type checking
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+
+# Logs
+logs/
+*.log
+
+
+# Node / Frontend (future-proofing)
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
