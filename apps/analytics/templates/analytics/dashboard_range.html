@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 900px; margin: 40px auto; padding: 20px;">
+
+    <h2 style="text-align: center; margin-bottom: 30px;">
+        Date Range Analytics
+    </h2>
+
+    <div style="background: #eef7ff; padding: 20px; border-radius: 8px; border: 1px solid #bcd4f6;">
+        <pre>{{ range_data|safe }}</pre>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="{% url 'analytics:dashboard' %}"
+           style="padding: 10px 20px; background: #007bff; color: white; border-radius: 6px; text-decoration: none;">
+            Back to SaaS FinanceApp Analytics Dashboard
+        </a>
+    </div>
+
+</div>
+{% endblock %}
+

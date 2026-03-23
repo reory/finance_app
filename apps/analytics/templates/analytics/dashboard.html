@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 1100px; margin: 40px auto; padding: 20px;">
+
+    <h2 style="text-align: center; margin-bottom: 30px;">
+        SaaS Finance App Analytics Dashboard
+    </h2>
+
+    <!-- Monthly Overview -->
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 25px;">
+        <h3>Monthly Overview</h3>
+
+        {% if monthly.monthly_totals %}
+            <ul>
+                {% for item in monthly.monthly_totals %}
+                    <li>{{ item.month }}: £{{ item.total }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No monthly data available.</p>
+        {% endif %}
+    </div>
+
+    <!-- Category Breakdown -->
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 25px;">
+        <h3>Category Breakdown</h3>
+
+        {% if categories.categories %}
+            <ul>
+                {% for item in categories.categories %}
+                    <li>{{ item.category }}: £{{ item.total }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No category data available.</p>
+        {% endif %}
+    </div>
+
+    <!-- Income vs Expenses -->
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #ddd; margin-bottom: 25px;">
+        <h3>Income vs Expenses</h3>
+
+        <p><strong>Income:</strong> £{{ income_expenses.income }}</p>
+        <p><strong>Expenses:</strong> £{{ income_expenses.expenses }}</p>
+        <p><strong>Net:</strong> £{{ income_expenses.net }}</p>
+    </div>
+
+    <!-- Running Balance -->
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
+        <h3>Running Balance</h3>
+
+        {% if running.running_balance %}
+            <ul>
+                {% for item in running.running_balance %}
+                    <li>{{ item.date }} — £{{ item.balance }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No running balance data available.</p>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock %}

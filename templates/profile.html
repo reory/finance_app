@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 60px auto; padding: 20px;">
+
+    <h2 style="text-align: center; margin-bottom: 25px;">
+        Your Profile
+    </h2>
+
+    <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
+        <p><strong>Username:</strong> {{ request.user.username }}</p>
+        <p><strong>Email:</strong> {{ request.user.email }}</p>
+        <p><strong>Member Since:</strong> {{ request.user.date_joined|date:"F j, Y" }}</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="{% url 'analytics:dashboard' %}"
+           style="padding: 10px 20px; background: #007bff; color: white; border-radius: 6px; text-decoration: none;">
+            Back to Dashboard
+        </a>
+    </div>
+
+</div>
+{% endblock %}

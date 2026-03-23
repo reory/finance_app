@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 900px; margin: 40px auto; padding: 20px;">
+
+    <h2 style="text-align: center; margin-bottom: 30px;">
+        Your Transactions
+    </h2>
+
+    <div style="text-align: right; margin-bottom: 20px;">
+        <a href="{% url 'analytics:transaction_create' %}"
+           style="padding: 10px 15px; background: #28a745; color: white; border-radius: 6px; text-decoration: none;">
+            + Add Transaction
+        </a>
+    </div>
+
+    {% if transactions %}
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="background: #f1f1f1;">
+                    <th style="padding: 10px; border: 1px solid #ddd;">Date</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">Description</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">Category</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">Amount</th>
+                    <th style="padding: 10px; border: 1px solid #ddd;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in transactions %}
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;">{{ t.date }}</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">{{ t.description }}</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">{{ t.category }}</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">£{{ t.amount }}</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">
+                        <a href="{% url 'analytics:transaction_edit' t.pk %}">Edit</a> |
+                        <a href="{% url 'analytics:transaction_delete' t.pk %}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No transactions found.</p>
+    {% endif %}
+
+</div>
+{% endblock %}

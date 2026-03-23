@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+
+<p class="text-muted">
+    This chart compares your total monthly income and expenses. 
+    When the green line is above the red line, you saved money that month.
+</p>
+
+<div class="container mt-4">
+    <h2 class="mb-4">SaaS Financial Charts</h2>
+
+    <div class="card p-4 mb-4">
+        <h4 class="mb-3">Income vs Expenses</h4>
+        <canvas id="incomeExpenseChart" height="120"></canvas>
+    </div>
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // Chart data passed from Django
+    const chartData = {{ chart_data|safe }};
+
+    const ctx = document.getElementById('incomeExpenseChart');
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: chartData.labels,
+            datasets: [
+                {
+                    label: 'Income',
+                    data: chartData.income,
+                    borderColor: 'rgba(0, 150, 0, 0.9)',
+                    backgroundColor: 'rgba(0, 150, 0, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                },
+                {
+                    label: 'Expenses',
+                    data: chartData.expenses,
+                    borderColor: 'rgba(200, 0, 0, 0.9)',
+                    backgroundColor: 'rgba(200, 0, 0, 0.1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const value = context.raw;
+                            return `${context.dataset.label}: £${value.toFixed(2)}`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+</script>
+
+<div class="alert alert-info mt-4">
+    <strong>Insight:</strong> Your income exceeded your expenses in 
+    <strong>January</strong> and <strong>March</strong>, but February was a deficit month.
+</div>
+
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 480px; margin: 60px auto; padding: 20px;">
+
+    <h2 style="text-align: center; margin-bottom: 25px;">
+        Create Your FinanceApp Account
+    </h2>
+
+    {% if messages %}
+        <div style="margin-bottom: 15px;">
+            {% for message in messages %}
+                <div style="padding: 10px; background: #e6ffe6; border-left: 4px solid #009900; margin-bottom: 8px;">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <form method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+        {% csrf_token %}
+
+        <div>
+            <label>Username</label>
+            <input type="text" name="username" required
+                   value="{{ form.username.value|default:'' }}"
+                   style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+        </div>
+
+        <div>
+            <label>Email</label>
+            <input type="email" name="email" required
+                   value="{{ form.email.value|default:'' }}"
+                   style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+        </div>
+
+        <div>
+            <label>Password</label>
+            <input type="password" name="password" required
+                   style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+        </div>
+
+        <div>
+            <label>Confirm Password</label>
+            <input type="password" name="confirm_password" required
+                   style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+        </div>
+
+        <button type="submit"
+                style="padding: 12px; background: #28a745; color: white; border: none; border-radius: 6px; cursor: pointer;">
+            Create Account
+        </button>
+    </form>
+
+    <p style="text-align: center; margin-top: 20px; color: #555;">
+        Already have an account?
+        <a href="{% url 'login' %}" style="color: #007bff;">Login here</a>
+    </p>
+
+</div>
+{% endblock %}

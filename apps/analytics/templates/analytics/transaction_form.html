@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 40px auto; padding: 20px;">
+
+    <h2 style="text-align: center; margin-bottom: 30px;">
+        Transaction Form
+    </h2>
+
+    <form method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit"
+                style="padding: 12px; background: #007bff; color: white; border: none; border-radius: 6px; cursor: pointer;">
+            Save Transaction
+        </button>
+    </form>
+
+</div>
+{% endblock %}
