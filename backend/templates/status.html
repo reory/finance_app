@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 60px auto; padding: 20px;">
+
+    <h2 style="text-align: center; margin-bottom: 25px;">
+        System Status
+    </h2>
+
+    <div style="background: #eef7ff; padding: 20px; border-radius: 8px; border: 1px solid #bcd4f6;">
+        <p style="margin-bottom: 10px;">
+            <strong>Pipeline Status:</strong> {{ pipeline_status|default:"Operational" }}
+        </p>
+
+        <p style="margin-bottom: 10px;">
+            <strong>Last Processed File:</strong> {{ last_file|default:"No recent uploads" }}
+        </p>
+
+        <p>
+            <strong>Messages:</strong> {{ status_message|default:"Everything is running smoothly." }}
+        </p>
+    </div>
+
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="{% url 'dashboard' %}"
+           style="padding: 10px 20px; background: #007bff; color: white; border-radius: 6px; text-decoration: none;">
+            Back to Dashboard
+        </a>
+    </div>
+
+</div>
+{% endblock %}

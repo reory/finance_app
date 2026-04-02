@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container" style="max-width: 800px; margin: 0 auto; padding: 40px 20px;">
+
+    <h1 style="text-align: center; margin-bottom: 20px;">
+        Welcome to SaaS Finance App
+    </h1>
+
+    <p style="text-align: center; font-size: 1.1rem; color: #555;">
+        Your personal finance dashboard for tracking spending, analysing trends, and managing your financial data.
+    </p>
+
+    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 40px;">
+        <a href="{% url 'login' %}" 
+           style="padding: 12px 24px; background: #007bff; color: white; border-radius: 6px; text-decoration: none;">
+            Login
+        </a>
+
+        <a href="{% url 'register' %}" 
+           style="padding: 12px 24px; background: #28a745; color: white; border-radius: 6px; text-decoration: none;">
+            Register
+        </a>
+    </div>
+
+    <div style="margin-top: 60px; text-align: center; color: #777;">
+        <p>Upload CSV files, view analytics, and explore your financial insights.</p>
+    </div>
+
+</div>
+{% endblock %}

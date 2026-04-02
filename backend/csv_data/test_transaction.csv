@@ -1,0 +1,11 @@
+date,description,category,amount
+2024-01-01,Salary,Income,2500
+2024-01-02,Groceries,Food,-45.20
+2024-01-03,Rent,Housing,-850
+2024-01-05,Coffee,Food,-3.50
+2024-01-10,Electric Bill,Utilities,-120
+2024-01-15,Freelance Project,Income,600
+2024-01-18,Restaurant,Food,-32.90
+2024-01-20,Internet Bill,Utilities,-40
+2024-01-25,Car Fuel,Transport,-55
+2024-01-28,Bonus,Income,300

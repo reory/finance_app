@@ -1,0 +1,43 @@
+date,description,category,amount
+
+2024-01-01,Salary ,Income, £2,500.00
+01/02/2024, Groceries,Food,-45.20
+2024/01/03,Rent,Housing,(850)
+2024-01-05,Coffee,Food,-3.50,,,
+,,,
+2024-01-10,Electric Bill,Utilities,-120.00
+2024-01-15,Freelance Project,Income,600
+2024-01-18,Restaurant ,Food , -32.90
+2024-01-20,Internet Bill,Utilties,-40   # typo in category
+2024-01-25,Car Fuel,Transport,-55.00
+2024-01-28,Bonus,Income,300.00
+
+# random comment line that shouldn't be here
+2024-01-30,Snacks,Food,-4.20
+
+date,description,category,amount   # duplicate header
+
+2024-02-01,Salary,Income,£2500
+2024-02-02,Groceries,Food,- 48.10
+2024-02-03,Rent,Housing,-850.00
+2024-02-05,Coffee,Food,-3.50
+2024-02-10,Electric Bill,Utilities,-120
+2024-02-15,Freelance Project,Income,600
+2024-02-18,Restaurant,Food,-32.90
+2024-02-20,Internet Bill,Utilities,-40
+2024-02-25,Car Fuel,Transport,-55
+2024-02-28,Bonus,Income,300
+
+2024-03-01,Salary,Income,2500.00
+2024-03-02,Groceries,Food,-45.20
+2024-03-03,Rent,Housing,-850
+2024-03-05,Coffee,Food,-3.50
+2024-03-10,Electric Bill,Utilities,-120
+2024-03-15,Freelance Project,Income,600
+2024-03-18,Restaurant,Food,-32.90
+2024-03-20,Internet Bill,Utilities,-40
+2024-03-25,Car Fuel,Transport,-55
+2024-03-28,Bonus,Income,300
+
+,,,,,,,,,
+2024-03-29,Random Junk Row,???,-12.34,extra,columns,here
