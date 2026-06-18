@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
+from django.views.decorators.http import require_POST
 from .models import Transaction
 
 
@@ -24,3 +26,13 @@ def transactions_view(request):
     return render(
         request, "analytics/transactions.html", {"transactions": transactions}
     )
+
+
+@login_required
+@require_POST
+def clear_transactions(request):
+    """Deletes all transactions for the current user."""
+
+    Transaction.objects.filter(user=request.user).delete()
+    messages.success(request, "All transactions have been cleared.")
+    return redirect("analytics:transactions")

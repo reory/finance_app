@@ -8,4 +8,5 @@ urlpatterns = [
     path("transactions/", views.transactions_view, name="transactions"),
     path("uploads/", include("apps.uploads.urls")),
     path("status/", views.status_view, name="status"),
+    path("clear/", views.clear_transactions, name="clear_transactions"),
 ]

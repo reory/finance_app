@@ -85,6 +85,7 @@ INSTALLED_APPS = [
     "apps.analytics.apps.AnalyticsConfig",
     "apps.uploads",
     "apps.logs",
+    "apps.charts",
 ]
 
 MIDDLEWARE = [

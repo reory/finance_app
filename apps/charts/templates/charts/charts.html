@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 900px; margin: 40px auto; padding: 20px; background: #fff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <h2 style="margin-bottom: 20px;">SaaS Financial Charts</h2>
+    
+    <canvas id="financeChart" width="400" height="200"></canvas>
+
+    <div style="background: #e0f7fa; padding: 15px; border-radius: 5px; margin-top: 30px; border-left: 5px solid #00acc1;">
+        <strong>Insight:</strong> {{ insight }}
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('financeChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {{ months|safe }},
+            datasets: [
+                { label: 'Income', data: {{ incomes|safe }}, borderColor: 'green', fill: false },
+                { label: 'Expenses', data: {{ expenses|safe }}, borderColor: 'red', fill: false }
+            ]
+        },
+        options: {
+            responsive: true,
+            // Add this font configuration to match Bootstrap
+            font: {
+                family: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+                size: 14
+            },
+            scales: {
+                y: { beginAtZero: true }
+            }
+        }
+    });
+</script>
+{% endblock %}
