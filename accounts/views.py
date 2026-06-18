@@ -8,6 +8,7 @@ from django import forms
 from apps.logs.pipeline_logger import log_pipeline_step
 from apps.logs.security_logger import log_suspicious_activity
 
+
 # Forms -----------------------------------------------
 class RegisterForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -21,12 +22,12 @@ class RegisterForm(forms.ModelForm):
         # Run the parent class validation first
         cleaned = super().clean()
         # Extract both password fields from the cleaned data.
-        p1 = cleaned.get("password")
-        p2 = cleaned.get("confirm_password")
+        p1 = self.data.get("password")
+        p2 = self.data.get("confirm_password")
         # Ensure both fields exist and match
-        if p1 and p2 and p1 != p2:
+        if p1 != p2:
             raise forms.ValidationError("Passwords do not match.")
-        
+
         # Return the validated from data
         return cleaned
 
@@ -48,8 +49,7 @@ def login_view(request):
             return redirect("analytics:dashboard")
         else:
             # Log failed attempts to login
-            log_suspicious_activity(
-                f"Failed login attempt for username={username}")
+            log_suspicious_activity(f"Failed login attempt for username={username}")
             messages.error(request, "Invalid username or password.")
 
     return render(request, "login.html")
@@ -57,7 +57,7 @@ def login_view(request):
 
 def logout_view(request):
     """The view the user sees once logged out of a session."""
-    
+
     log_pipeline_step(f"User logged out: {request.user.username}")
     logout(request)
     return redirect("login")
@@ -86,8 +86,10 @@ def register_view(request):
 
     return render(request, "register.html", {"form": form})
 
+
 def index(request):
     return render(request, "index.html")
+
 
 @login_required
 def profile_view(request):
@@ -95,4 +97,3 @@ def profile_view(request):
 
     log_pipeline_step(f"Profile viewed: {request.user.username}")
     return render(request, "profile.html")
-

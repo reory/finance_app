@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div style="max-width: 1000px; margin: 60px auto; padding: 20px;">
+
+    <h2 style="margin-bottom: 30px;">
+        Transaction History
+    </h2>
+
+    <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
+    
+    {% if transactions %}
+        <table style="width: 100%; border-collapse: collapse;">
+            <thead>
+                <tr style="border-bottom: 2px solid #ccc;">
+                    <th style="padding: 10px; text-align: left;">Date</th>
+                    <th style="padding: 10px; text-align: left;">Description</th>
+                    <th style="padding: 10px; text-align: left;">Category</th>
+                    <th style="padding: 10px; text-align: right;">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for t in transactions %}
+                <tr style="border-bottom: 1px solid #eee;">
+                    <td style="padding: 10px;">{{ t.date }}</td>
+                    <td style="padding: 10px;">{{ t.description }}</td>
+                    <td style="padding: 10px;">{{ t.category }}</td>
+                    <td style="padding: 10px; text-align: right;">${{ t.amount }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p style="color: #999; text-align: center;">No transactions yet. Upload a CSV file to get started!</p>
+    {% endif %}
+
+</div>
+{% endblock %}

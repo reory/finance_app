@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Upload CSV{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card p-4 shadow-sm" style="max-width: 600px; margin: auto;">
+        <h2>Upload Financial Data</h2>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="fileInput" class="form-label">Select CSV File</label>
+                <input type="file" name="csv_file" class="form-control" id="fileInput" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+                Process Upload
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
