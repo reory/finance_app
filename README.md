@@ -35,7 +35,7 @@ The architecture is intentionally scalable, with a dedicated ingestion pipeline,
 ![User profile dashboard](screenshots/profile1.png)
 ![CSV successfully cleaned dashboard](screenshots/testcsv1.png)
 ![Upload CSV dashboard](screenshots/uploadcsv1.png)
-![Analytical Chart Dashboard](screenshots/chart1.png)
+![Analytical Chart Dashboard](screenshots/sass.png)
 
 </details>
 
@@ -303,9 +303,11 @@ pytest -q
 
 - [ ] Category inference
 
+- [ ] Upload Template Facility
+
 - [ ] Duplicate transaction detection
 
-- [ ] Chart visualisations (Altair, Chart.js, or Plotly)
+- [x] Chart visualisations (Altair, Chart.js, or Plotly)
 
 - [ ] Export to CSV
 
