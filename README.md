@@ -301,23 +301,23 @@ pytest -q
 <details>
   <summary>🛣️ Roadmap</summary>
 
-- [] Category inference
+- [ ] Category inference
 
-- [] Duplicate transaction detection
+- [ ] Duplicate transaction detection
 
-- [] Chart visualisations (Altair, Chart.js, or Plotly)
+- [ ] Chart visualisations (Altair, Chart.js, or Plotly)
 
-- [] Export to CSV
+- [ ] Export to CSV
 
-- [] Multi‑currency support
+- [ ] Multi‑currency support
 
-- [] Bank‑specific import presets
+- [ ] Bank‑specific import presets
 
-- [] Dashboard widgets
+- [ ] Dashboard widgets
 
-- [] API endpoints (REST or GraphQL)
+- [ ] API endpoints (REST or GraphQL)
 
-- [] Background tasks (Celery or RQ)
+- [ ] Background tasks (Celery or RQ)
 
 </details>
 
