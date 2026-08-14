@@ -1,6 +1,7 @@
+from unittest.mock import MagicMock
+
 import pytest
 from django.contrib.auth.models import User
-from unittest.mock import MagicMock
 
 
 @pytest.fixture(autouse=True)

@@ -44,7 +44,7 @@ The architecture is intentionally scalable, with a dedicated ingestion pipeline,
 <details>
   <summary>📹Demo Video</summary>
 
-[![Video of the dashboard]](demo.mp4)
+https://github.com/user-attachments/assets/f76a90a7-7577-4fdc-9eb9-451fe27f478d
 
 </details>
 

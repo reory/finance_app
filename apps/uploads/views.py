@@ -1,9 +1,13 @@
 import csv
 import io
-from django.shortcuts import render, redirect
+
+from apps.analytics.models import Transaction
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from apps.analytics.models import Transaction
+from django.db import DatabaseError
+from django.shortcuts import redirect, render
+
+EXPECTED_HEADER = ["date", "description", "category", "amount", "type"]
 
 
 @login_required
@@ -31,8 +35,14 @@ def upload_view(request):
             io_string = io.StringIO(data_set)
             reader = csv.reader(io_string, delimiter=",")
 
-            # Skip the header row if your pipeline uses one
+            # Validate the header row matches the expected columns
             header = next(reader, None)
+            if header is None or [h.strip().lower() for h in header] != EXPECTED_HEADER:
+                messages.error(
+                    request,
+                    f"CSV header must be: {', '.join(EXPECTED_HEADER)}",
+                )
+                return render(request, "uploads/upload.html", status=400)
 
             # Process rows (This is where your ingestion pipeline hook goes)
             for row in reader:
@@ -51,8 +61,14 @@ def upload_view(request):
             messages.success(request, "CSV data ingested successfully!")
             return redirect("analytics:dashboard")
 
-        except Exception as e:
-            messages.error(request, f"Error processing file: {str(e)}")
+        except (
+            UnicodeDecodeError, 
+            csv.Error, 
+            IndexError, 
+            ValueError, 
+            DatabaseError
+        ) as e:
+            messages.error(request, f"Error processing file: {e!s}")
             return render(request, "uploads/upload.html", status=500)
 
     return render(request, "uploads/upload.html")

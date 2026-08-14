@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from apps.analytics.models import Transaction
 from django.contrib.auth.decorators import login_required
 from django.db import models
 from django.db.models import Sum, Value
-from django.db.models.functions import TruncMonth, Coalesce
-from apps.analytics.models import Transaction
+from django.db.models.functions import Coalesce, TruncMonth
+from django.shortcuts import render
 
 
 @login_required
