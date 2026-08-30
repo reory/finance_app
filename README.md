@@ -1,4 +1,5 @@
-# 📌 Overview
+# 💷 Django SaaS Finance App
+
 ![Last Commit](https://img.shields.io/github/last-commit/reory/finance_app?cacheSeconds=60)
 ![Repo Size](https://img.shields.io/github/repo-size/reory/finance_app?cacheSeconds=60)
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -9,8 +10,6 @@
 ![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=for-the-badge)
 ![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/SQL-336791?style=for-the-badge)
-
-# 💰 SaaS FinanceApp
 
 A modular, pipeline‑driven finance analytics SaaS built with Django & PostgreSQL
 
