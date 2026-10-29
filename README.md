@@ -300,24 +300,15 @@ pytest -q
 <details>
   <summary>🛣️ Roadmap</summary>
 
-- [ ] Category inference
-
-- [ ] Upload Template Facility
-
-- [ ] Duplicate transaction detection
-
 - [x] Chart visualisations (Altair, Chart.js, or Plotly)
-
 - [ ] Export to CSV
-
-- [ ] Multi‑currency support
-
-- [ ] Bank‑specific import presets
-
 - [ ] Dashboard widgets
-
+- [ ] Upload Template Facility
+- [ ] Duplicate transaction detection
+- [ ] Category inference
+- [ ] Bank‑specific import presets
 - [ ] API endpoints (REST or GraphQL)
-
+- [ ] Multi‑currency support
 - [ ] Background tasks (Celery or RQ)
 
 </details>
