@@ -20,6 +20,11 @@ def mock_loggers(monkeypatch):
 
 @pytest.fixture
 def base_user_data():
+    """
+    Returns a dictionary containing a set of 
+    user fields used throughout the application.
+    """
+
     return {
         "username": "testdeveloper",
         "email": "dev@example.com",
@@ -29,7 +34,11 @@ def base_user_data():
 
 @pytest.fixture
 def create_user(db, base_user_data):
+    """Create a new user and save it to the database."""
+
     def make_user(**kwargs):
+        """Create a user with sensible defaults for tests."""
+
         data = base_user_data.copy()
         data.update(kwargs)
         return User.objects.create_user(
@@ -41,6 +50,8 @@ def create_user(db, base_user_data):
 
 @pytest.fixture
 def standard_user(create_user):
+    """Return a default test user instance."""
+
     return create_user()
 
 

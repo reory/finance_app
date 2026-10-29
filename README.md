@@ -4,12 +4,14 @@
 ![Repo Size](https://img.shields.io/github/repo-size/reory/finance_app?cacheSeconds=60)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
-![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
-![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=for-the-badge)
-![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
+![HTML](https://img.shields.io/badge/HTML-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/SQL-336791?style=for-the-badge)
+![Pydantic](https://img.shields.io/badge/Pydantic-E92063?style=for-the-badge&logo=pydantic&logoColor=white)
+![Pytest](https://img.shields.io/badge/Pytest-0A9EDC?style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+
 
 A modular, pipeline‑driven finance analytics SaaS built with Django & PostgreSQL
 
@@ -20,7 +22,7 @@ The architecture is intentionally scalable, with a dedicated ingestion pipeline,
 
 ---
 
-# 🚀 Key Features
+## 🚀 Key Features
 
 <details>
   <summary>📸Screenshots</summary>
@@ -49,7 +51,7 @@ https://github.com/user-attachments/assets/f76a90a7-7577-4fdc-9eb9-451fe27f478d
 
 ---
 
-# ⚙️ Tech Stack
+## ⚙️ Tech Stack
 - Django
 - PostgreSQL
 - Pytest
@@ -153,6 +155,7 @@ csv_data/        → Test CSVs
 finance_app/     → Project-level config (settings, URLs, WSGI)
 settings/        → Environment-specific settings (base/dev/prod)
 templates/       → Global templates (login, register, base layout)
+test/            → Pytest suite
 ```
 
 </details>
@@ -192,7 +195,7 @@ This allows:
 ---
 
 ## 🧹 Example Cleaner Output
-```
+```text
 When uploading a messy CSV, the app might show:
 Some rows were skipped during cleaning:
 ["Row 1: Invalid amount ' £2'",
@@ -206,24 +209,52 @@ Valid rows are imported cleanly and appear in the dashboard.
 
 ---
 
-# 🛠️ Installation
+## 🛠️ Installation
 
-1. ## Clone the repo
+1. ### Clone the repo
 ```bash
 git clone https://github.com/reory/finance_app.git
 cd finance_app
 ```
-2. ## Create a virtual environment
+2. ### Create a virtual environment
 ```bash
 python -m venv venv
 source venv/Scripts\activate # Windows
 source venv\bin\activate  # Mac/Linux
 ```
-3. ## Install dependencies
+3. ### Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
-4. ## Configure environment variables
+
+---
+
+4. ### 🗃️ Finance App requires running a PostgreSQL database engine
+
+```Bash
+# macOS (via Homebrew):
+brew install postgresql@15
+brew services start postgresql@15
+```
+
+```Bash
+#Ubuntu / Debian:
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+sudo systemctl start postgresql
+```
+- Windows: Download and run the official installer from PostgreSQL Downloads.
+
+### Create the Database
+```bash
+psql -U postgres
+```
+
+```SQL
+CREATE DATABASE finance_app;
+```
+
+5. ### Configure environment variables
 Create a .env file in the project root:
 
 ```bash
@@ -236,11 +267,13 @@ DB_PASSWORD=yourpassword
 DB_HOST=localhost
 DB_PORT=5432
 ```
-5. Run migrations
+
+6. Run migrations
+- Apply Django database migrations to set up schema tables in PostgreSQL:
 ```bash
 python manage.py migrate
 ```
-6. Start the server
+7. Start the server
 ```bash
 python manage.py runserver
 ```
@@ -288,7 +321,7 @@ This project includes a small, focused test suite that covers the critical paths
 These tests ensure that the ingestion pipeline is stable, predictable, and safe to 
 extend
 
-▶️ Run the Pytest suite:
+## ▶️ Run the Pytest suite:
 ```bash
 pytest -q
 ```
@@ -301,7 +334,6 @@ pytest -q
   <summary>🛣️ Roadmap</summary>
 
 - [x] Chart visualisations (Altair, Chart.js, or Plotly)
-- [ ] Export to CSV
 - [ ] Dashboard widgets
 - [ ] Upload Template Facility
 - [ ] Duplicate transaction detection

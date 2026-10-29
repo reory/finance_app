@@ -5,6 +5,7 @@ from .models import UserProfile
 
 @admin.register(UserProfile)
 class UserProfilAdmin(admin.ModelAdmin):
+    """Admin configuration for managing UserProfile records in the Django admin site."""
 
     # Columns shown in the admin list view
     list_display = ("user", "organisation", "timezone", "onboarding_complete")

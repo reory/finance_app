@@ -1,5 +1,3 @@
-from apps.logs.pipeline_logger import log_pipeline_step
-from apps.logs.security_logger import log_suspicious_activity
 from django import forms
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -7,9 +5,18 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
 
+from apps.logs.pipeline_logger import log_pipeline_step
+from apps.logs.security_logger import log_suspicious_activity
+
 
 # Forms -----------------------------------------------
 class RegisterForm(forms.ModelForm):
+    """ 
+    Extends Django's ModelForm to provide user registration fields,
+    validation rules, and database integration for creating and
+    storing new user records.
+    """
+
     password = forms.CharField(widget=forms.PasswordInput)
     confirm_password = forms.CharField(widget=forms.PasswordInput)
 
@@ -18,6 +25,7 @@ class RegisterForm(forms.ModelForm):
         fields = ("username", "email", "password")
 
     def clean(self):
+        """Perform custom model validation before saving."""
         # Run the parent class validation first
         cleaned = super().clean()
         # Extract both password fields from the cleaned data.
@@ -87,6 +95,7 @@ def register_view(request):
 
 
 def index(request):
+    """Render the homepage."""
     return render(request, "index.html")
 
 

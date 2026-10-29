@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "finance_app"
+version = "1.0.0"
+description = "A modular, pipeline-driven finance analytics SaaS built with Django & PostgreSQL"
+authors = [
+{ name = "Roy Peters" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+"Django>=5.2,<6.0",
+"pandas>=2.3.3",
+"python-dotenv>=1.0.0",
+"psycopg2-binary>=2.9.0",
+"pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+"pytest>=9.0.0",
+"pytest-django>=4.8.0",
+"pytest-cov>=6.0.0",
+]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "finance_app.settings.dev"
+python_files = ["test_.py", "_test.py"]
+addopts = "-v --tb=short"
+
+[tool.coverage.run]
+source = ["apps", "accounts", "finance_app"]
+omit = ["/migrations/", "/tests/"]

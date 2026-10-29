@@ -38,7 +38,7 @@ media_root/
 # Uploaded CSVs (your ingestion pipeline)
 csv_data/*.csv
 uploads/*.csv
-
+logs_output/
 
 # Environment variables
 .env
@@ -61,9 +61,11 @@ uploads/*.csv
 # OS files
 .DS_Store
 Thumbs.db
+project_notes.txt
 
 
 # Testing / Coverage
+.hypothesis
 .pytest_cache/
 .coverage
 coverage.xml
@@ -74,12 +76,7 @@ htmlcov/
 .mypy_cache/
 .dmypy.json
 .pyre/
-
-
-# Logs
-logs
-*.log
-
+.ruff_cache/
 
 # Node / Frontend (future-proofing)
 node_modules/

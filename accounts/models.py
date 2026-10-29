@@ -3,7 +3,8 @@ from django.db import models
 
 
 class UserProfile(models.Model):
-
+    """Represents a user's extended profile and preferences."""
+    
     user = models.OneToOneField(
         User, 
         on_delete=models.CASCADE, 
@@ -18,4 +19,5 @@ class UserProfile(models.Model):
 
     def __str__(self):
         """Make admin page readable."""
+
         return self.user.username

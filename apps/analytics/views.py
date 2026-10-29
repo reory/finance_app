@@ -10,7 +10,12 @@ from .models import Transaction
 def dashboard_view(request):
     """Renders the main finance analytics dashboard."""
 
-    return render(request, "dashboard.html")
+    transaction_count = Transaction.objects.filter(user=request.user).count()
+
+    context = {
+        "transaction_count": transaction_count,
+    }
+    return render(request, "dashboard.html", context)
 
 
 @login_required
@@ -22,6 +27,7 @@ def status_view(request):
 
 @login_required
 def transactions_view(request):
+    """Display and manage user transactions."""
 
     transactions = Transaction.objects.filter(user=request.user)
     return render(
@@ -37,3 +43,5 @@ def clear_transactions(request):
     Transaction.objects.filter(user=request.user).delete()
     messages.success(request, "All transactions have been cleared.")
     return redirect("analytics:transactions")
+
+

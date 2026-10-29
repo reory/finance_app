@@ -10,7 +10,7 @@
     <form action="{% url 'analytics:clear_transactions' %}" method="post" 
           onsubmit="return confirm('Are you sure you want to delete ALL your transactions?');">
         {% csrf_token %}
-    <button type="submit" class="btn btn-danger btn-sm">Clear All Data</button>
+    <button type="submit" class="btn btn-danger btn-sm" style="margin-bottom: 20px;">Clear All Data</button>
     </form>
     
     <div style="background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #ddd;">
@@ -31,7 +31,13 @@
                     <td style="padding: 10px;">{{ t.date }}</td>
                     <td style="padding: 10px;">{{ t.description }}</td>
                     <td style="padding: 10px;">{{ t.category }}</td>
-                    <td style="padding: 10px; text-align: right;">${{ t.amount }}</td>
+                    <td style="padding: 10px; text-align: right;">
+                        {% if t.amount < 0 %}
+                            -${{ t.amount|stringformat:"s"|slice:"1:" }}
+                        {% else %}
+                            ${{ t.amount }}
+                        {% endif %}
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
@@ -39,6 +45,7 @@
     {% else %}
         <p style="color: #999; text-align: center;">No transactions yet. Upload a CSV file to get started!</p>
     {% endif %}
+    </div>
 
 </div>
 {% endblock %}

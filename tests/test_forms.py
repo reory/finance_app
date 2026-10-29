@@ -1,7 +1,8 @@
 import pytest
-from accounts.views import RegisterForm
 from hypothesis import HealthCheck, given, settings
 from hypothesis import strategies as st
+
+from accounts.views import RegisterForm
 
 # Instructs pytest to safely allow database transactions across this entire test module
 pytestmark = pytest.mark.django_db

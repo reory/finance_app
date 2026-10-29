@@ -3,6 +3,8 @@ from django.db import models
 
 
 class Transaction(models.Model):
+    """# Represents a single financial transaction record."""
+
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     date = models.DateField()
     description = models.CharField(max_length=255)
